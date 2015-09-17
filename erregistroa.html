@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	<title>erregistroa</title>
+	<script type="text/javascript">
+	  function ikusBalioak(){
+	      var sAux="";
+	      var frm=document.getElementById("erregistro");
+	      //for(i=1;i<frm.elements.length;i++){
+		sAux +="Izena: " + frm.elements[1].value+"\n";
+		sAux +="Email: " + frm.elements[2].value+"\n";
+		sAux +="Pasahitza: " + frm.elements[3].value+"\n";
+		sAux +="Telefonoa: " + frm.elements[4].value+"\n";
+		sAux +="Espezialitatea: " + frm.elements[5].value+"\n";
+	      //}
+	      alert(sAux);
+	  }
+      </script>
+  </head>
+  <body>
+  <form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" >
+    <fieldset>
+        <legend>Erregistro formularioa</legend>
+            <label>Izena (*)</label>
+                <input id="campo1" name="nombre" type="text" />
+            <label>Email (*)</label>
+                <input id="campo2" name="email" type="text" />
+            <label>Pasahitza (*)</label>
+                <input id="campo3" name="password" type="password" />
+            <p>
+            <label>Telefonoa (*)</label>
+                <input id="campo4" name="telf" type="text" />
+            <label>Espezialitatea (*)</label>
+                <input id="campo5" name="esp" type="text" />
+            <p>
+            <label>Intereseko herramintak</label>
+                <p>
+                <textarea name="herramintak" rows="10" cols="40">Idatzi hemen intereseko herramintak</textarea>
+            <p>
+            <input id="campo7" name="bidali" type="submit" value="bidali"/>
+    </fieldset>
+    </body>
+</form>
