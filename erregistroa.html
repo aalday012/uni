@@ -22,7 +22,7 @@
 	}
 	function emailEgokia(){
 		var frm=document.getElementById("erregistro");
-		if (/^[a-z]*\d{3}@ikasle\.ehu\.eus/.test(frm.email.value)){
+		if (/^[a-z]+\d{3}@ikasle\.ehu\.[eus | es]/.test(frm.email.value)){
 			return true;
 		}
 		return false;
@@ -33,35 +33,52 @@
 			return false;
 		return true;
 	}
+	function balioakerakutsi(){
+	      var sAux="";
+	      var frm=document.getElementById("erregistro");
+	      //for(i=1;i<frm.elements.length;i++){
+		sAux +="Izena: " + frm.izena.value+"\n";
+		sAux +="Email: " + frm.email.value+"\n";
+		sAux +="Pasahitza: " + frm.pass.value+"\n";
+		sAux +="Telefonoa: " + frm.telf.value+"\n";
+		if(frm.konpu.checked) sAux +="Espezialitatea: Konputazioa\n";
+		if(frm.soft.checked) sAux +="Espezialitatea: Software ingeniaritza\n";
+		if(frm.hard.checked) sAux +="Espezialitatea: Konputagailu ingeniaritza\n";
+	        if(frm.beste.checked)Aux +="Espezialitatea: Bestelakoa\n";
+	      //}
+	      alert(sAux);
+	  }
 	
-	function ikusBalioak(){	    
-		if (!beharrezkoak())
+	function ikusBalioak(){	
+		var sAux="";
+		if (!beharrezkoak()){
 			alert("Beharrezkoak(*) osatu.");
-		if(!pasaitzaEgokia())
+			return(false);
+		}
+		if(!pasaitzaEgokia()){
 			alert("Pasaitza 6 karaktere behar ditu.");
-		if(!telefEgokia())
+			return(false);
+		}
+		if(!telefEgokia()){
 			alert("Telefonoak 9 DIGITU behar ditu.");
-		if(!emailEgokia())
-			alert("EMAIL");
-		
-			
+			return(false);
+		}
+		if(!emailEgokia()){
+			alert("Email formatu desegokia: hizkikatea + hiru digitu + @ikasle.ehu.(es|eus)");
+			return(false);
+		}
+		balioakerakutsi();
+		//alert("dena ondo\n");
 		/*sAux +="Izena: " + frm.izena.value+"\n";
-			
-				sAux +="Email: " + frm.email.value+"\n";
-			if(frm.pass.value.length <= 5)		
-				sAux +="Pasahitza 6 karaktere behar ditu gutxienez.\n";
-			else
-				sAux +="Pasahitza: " + frm.pass.value+"\n";
-			sAux +="Telefonoa: " + frm.telf.value+"\n";
-			if(frm.konpu.checked)
-				sAux +="Espezialitatea: Konputazioa\n";
-			else if(frm.soft.checked)
-				sAux +="Espezialitatea: Software ingeniaritza\n";
-			else if(frm.hard.checked)
-				sAux +="Espezialitatea: Konputagailu ingeniaritza\n";
-			else 
-				sAux +="Espezialitatea: Bestelakoa\n";
-	      alert(sAux);*/
+		sAux +="Email: " + frm.email.value+"\n";	
+		sAux +="Pasahitza: " + frm.pass.value+"\n";
+		sAux +="Telefonoa: " + frm.telf.value+"\n";
+		if(frm.konpu.checked) sAux +="Espezialitatea: Konputazioa\n";
+		if(frm.soft.checked) sAux +="Espezialitatea: Software ingeniaritza\n";
+		if(frm.hard.checked) sAux +="Espezialitatea: Konputagailu ingeniaritza\n";
+	        if(frm.beste.checked)Aux +="Espezialitatea: Bestelakoa\n";
+		alert("Hauek dira betetako datuak \n");*/
+		return(false);
 	}
       </script>
   </head>
@@ -71,7 +88,7 @@
 		<span><a href='layout.html'>Home</a></span>
 	</nav2>
 	<p>
-  <form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" >
+  <form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" meethod="POST">
     <fieldset>
         <legend>Erregistro formularioa</legend>
             <label>Izena (*)</label>
