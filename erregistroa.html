@@ -13,7 +13,6 @@
 		}	
 		return true;
 	}
-	
 	function pasaitzaEgokia(){
 		var frm=document.getElementById("erregistro");	
 		if(frm.pass.value.length < 6)	
@@ -36,8 +35,8 @@
 	function balioakerakutsi(){
 	      var sAux="";
 	      var frm=document.getElementById("erregistro");
-	      //for(i=1;i<frm.elements.length;i++){
 		sAux +="Izena: " + frm.izena.value+"\n";
+		sAux +="Abizenak: " + frm.abizenak.value+"\n";
 		sAux +="Email: " + frm.email.value+"\n";
 		sAux +="Pasahitza: " + frm.pass.value+"\n";
 		sAux +="Telefonoa: " + frm.telf.value+"\n";
@@ -45,10 +44,8 @@
 		if(frm.soft.checked) sAux +="Espezialitatea: Software ingeniaritza\n";
 		if(frm.hard.checked) sAux +="Espezialitatea: Konputagailu ingeniaritza\n";
 	        if(frm.beste.checked)Aux +="Espezialitatea: Bestelakoa\n";
-	      //}
 	      alert(sAux);
 	  }
-	
 	function ikusBalioak(){	
 		var sAux="";
 		if (!beharrezkoak()){
@@ -67,20 +64,14 @@
 			alert("Email formatu desegokia: hizkikatea + hiru digitu + @ikasle.ehu.(es|eus)");
 			return(false);
 		}
+		//require_once("Erregistratu.php");
 		balioakerakutsi();
-		//alert("dena ondo\n");
-		/*sAux +="Izena: " + frm.izena.value+"\n";
-		sAux +="Email: " + frm.email.value+"\n";	
-		sAux +="Pasahitza: " + frm.pass.value+"\n";
-		sAux +="Telefonoa: " + frm.telf.value+"\n";
-		if(frm.konpu.checked) sAux +="Espezialitatea: Konputazioa\n";
-		if(frm.soft.checked) sAux +="Espezialitatea: Software ingeniaritza\n";
-		if(frm.hard.checked) sAux +="Espezialitatea: Konputagailu ingeniaritza\n";
-	        if(frm.beste.checked)Aux +="Espezialitatea: Bestelakoa\n";
-		alert("Hauek dira betetako datuak \n");*/
+		/*<?php
+		include("Erregistatu.php");
+		?>*/
 		return(false);
 	}
-      </script>
+    </script>
   </head>
   <body>
   </header>
@@ -88,23 +79,34 @@
 		<span><a href='layout.html'>Home</a></span>
 	</nav2>
 	<p>
-  <form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" meethod="POST">
+  <form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" method="post" action = "erregistratu.php">
     <fieldset>
         <legend>Erregistro formularioa</legend>
+			<p>
             <label>Izena (*)</label>
-                <input id="izena" name="nombre" type="text" />
+                <input id="izena" name="izena" type="text" />
+			</p>
+			<p>
+			<label>Abizenak (*)</label>
+                <input id="abizenak" name="abizenak" type="text" />
+			</p>
+			<p>
             <label>Email (*)</label>
                 <input id="email" name="email" type="text" />
-            <label>Pasahitza (*)</label>
-                <input id="pass" name="password" type="password" />
-            <p>
-            <label>Telefonoa (*)</label>
-                <input id="telf" name="telf" type="text" />
+			</p>
 			<p>
+			<label>Telefonoa (*)</label>
+                <input id="telf" name="telf" type="text" />
+			</p>
+			<p>
+				<label>Pasahitza (*)</label>
+                <input id="pass" name="pass" type="password" />
+			</p>
+			<br/>
 			<label>Espezialitatea (*)</label>
 				<form action="">
 					<br><input type="radio" id="beste" name="Espezialitatea" value="Bestelakoa" checked="checked">Bestelakoa
-					<br><input type="radio" id="konpu" name="Espezialitatea" value="Konputazioa">Konputazioa
+					<br><input type="radio" id="konpu" name="Espezialitatea" value="Konputazioa">Konputazio zientziak
 					<br><input type="radio" id="soft" name="Espezialitatea" value="Software">Software ingeniaritza
 					<br><input type="radio" id="hard" name="Espezialitatea" value="Konputagailu">Konputagailu ingeniaritza
 				</form>
