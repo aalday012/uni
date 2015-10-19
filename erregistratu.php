@@ -1,8 +1,33 @@
 <?php
+$izena=$_POST['izena'];
+$abizenak=$_POST['abizenak'];
+if(empty($izena)){
+  echo "Beharrezkoak (*) bete";
+  echo "<p> <a href='erregistroa.html'> Erregistratzera bueltatu </a>";
+  die("");
+  }
+if(empty($abizenak)){
+  echo "Beharrezkoak (*) bete";
+  echo "<p> <a href='erregistroa.html'> Erregistratzera bueltatu </a>";
+  die("");
+  }
+$pass=$_POST['pass'];
+if(strlen($pass)<6){
+  echo "Pasahitz desegokia";
+  echo "<p> <a href='erregistroa.html'> Erregistratzera bueltatu </a>";
+  die("");
+  }
 $expr='/^[a-z]+\d{3}@ikasle\.ehu\.(eus|es)$/';
 $email=$_POST['email'];
 if(!filter_var($email, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$expr)))){
   echo "Email desegokia";
+  echo "<p> <a href='erregistroa.html'> Erregistratzera bueltatu </a>";
+  die("");
+  }
+$expr='/^\d{9}$/';
+$telf=$_POST['telf'];
+if(!filter_var($telf, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$expr)))){
+  echo "Telefono desegokia";
   echo "<p> <a href='erregistroa.html'> Erregistratzera bueltatu </a>";
   die("");
   }

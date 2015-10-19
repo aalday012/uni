@@ -26,8 +26,8 @@
     </body>
 </form>
 <?php
-if(isset($_POST['email'])){
-  if(isset($_POST['pass'])){
+if(!empty($_POST['email'])){
+  if(!empty($_POST['pass'])){
       mysql_connect("localhost", "root","")or die(mysql_error());
       mysql_select_db("Quiz") or die(mysql_error());
 
