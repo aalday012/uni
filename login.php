@@ -7,7 +7,6 @@
   <body>
   </header>
 	<nav2 class='main' id='n1' role='navigation'>
-		<span><a href='layout.html'>Home</a></span>
 	</nav2>
 	<p>
   <form id="login" name="login" method="post">
@@ -22,10 +21,17 @@
                 <input id="pass" name="pass" type="password" />
 			</p>
             <input id="login" name="login" type="submit" value="Login"/>
+            <input id="home" name="home" type="submit" value="Home"/>
+            
     </fieldset>
     </body>
 </form>
-<?php
+<?php 
+session_start();
+if(isset($_POST['home'])){
+  session_destroy();
+  header("Location: layout.html");
+}
 if(!empty($_POST['email'])){
   if(!empty($_POST['pass'])){
       mysql_connect("localhost", "root","")or die(mysql_error());
@@ -41,11 +47,12 @@ if(!empty($_POST['email'])){
 	      //die('Errorea: Pasahitz okerra!');
 	      echo "Errorea: Pasahitz okerra";
       }else{
+      $_SESSION['email']=$_POST['email'];
       echo "ondo login";
 
       mysql_close();
-      header('Location: logged.html ');
-      echo "ondo login";
+      header('Location: InserQuestion.php ');
+      //echo "<a href="InserQuestion.php?email=<?$_POST['email']>">emaila bidali<a/> ";
       }
       //echo "<meta content= '4;URL='layout.html''/>";
      }
