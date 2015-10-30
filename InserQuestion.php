@@ -36,7 +36,9 @@ if(isset($_POST['logout'])){
   header("Location: login.php");
 }
 if(isset($_POST['ikusi'])){
-  header("Location: seeXMLQuestions.php");
+  if(!empty($_SESSION['email'])){
+    header("Location: seeXMLQuestions.php");
+  }  
 }
 if(!empty($_POST['galdera'])){
   if(!empty($_POST['erantzuna'])){
