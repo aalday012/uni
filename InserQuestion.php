@@ -25,6 +25,7 @@
 			</p>
             <input id="gehitu" name="gehitu" type="submit" value="gehitu"/>
             <input id="logout" name="logout" type="submit" value="logout"/>
+            <input id="ikusi"  name="ikusi"  type="submit" value="galderak ikusi"/>
     </fieldset>
     </body>
 </form>
@@ -33,6 +34,9 @@ session_start();
 if(isset($_POST['logout'])){
   session_destroy();
   header("Location: login.php");
+}
+if(isset($_POST['ikusi'])){
+  header("Location: seeXMLQuestions.php");
 }
 if(!empty($_POST['galdera'])){
   if(!empty($_POST['erantzuna'])){
@@ -48,7 +52,21 @@ if(!empty($_POST['galdera'])){
 
   die('Errorea:' . mysql_error());
 }
-
+      $xml = simplexml_load_file('galderak.xml');
+      
+      $assessmentItem = $xml->addChild('assessmentItem');
+      $complexity = $assessmentItem->addAttribute('complexity',$_POST['zailtasuna']);
+      $subject = $assessmentItem->addAttribute('subject','WS');
+      
+      $itemBody = $assessmentItem ->addChild('itemBody');
+      $p = $itemBody->addChild('p',$_POST['galdera']);
+      $correctResponse = $assessmentItem->addChild('correctResponse');
+      $value = $correctResponse->addChild('value',$_POST['erantzuna']);
+      
+      //echo $xml->asXML();
+      $xml->asXML('galderak.xml');
+      
+      
       mysql_close();
       echo "galdera ondo gehituta";
       }
