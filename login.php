@@ -51,7 +51,7 @@ if(!empty($_POST['email'])){
       echo "ondo login";
 
       mysql_close();
-      header('Location: InserQuestion.php ');
+      header('Location: handlingQuizzes.php ');
       //echo "<a href="InserQuestion.php?email=<?$_POST['email']>">emaila bidali<a/> ";
       }
       //echo "<meta content= '4;URL='layout.html''/>";

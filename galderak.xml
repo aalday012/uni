@@ -17,4 +17,4 @@
 			<value>Phalloides</value>
 		</correctResponse>
 	</assessmentItem>
-<assessmentItem complexity="1" subject="WS"><itemBody><p>Zein da ikasgaia?</p></itemBody><correctResponse><value>ws</value></correctResponse></assessmentItem></assessmentItems>
+<assessmentItem complexity="1" subject="WS"><itemBody><p>Zein da ikasgaia?</p></itemBody><correctResponse><value>ws</value></correctResponse></assessmentItem><assessmentItem complexity="3" subject="WS"><itemBody><p>Orriak dinamikoki aldatzeko?</p></itemBody><correctResponse><value>ajax</value></correctResponse></assessmentItem></assessmentItems>
