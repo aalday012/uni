@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>erregistroa</title>
+	<title>Pasahitza aldatu</title>
   </head>
   <body>
   </header>
@@ -39,13 +39,22 @@ if(!empty($_POST['email'])){
     $emaitza = $bezeroa-> call('comprobar', array('x'=>$_POST['email']));
     //echo '<h2>Request</h2><pre>'.htmlspecialchars($bezeroa->request, ENT_QUOTES).'</pre>';
     //echo '<h2>Response</h2><pre>'.htmlspecialchars($bezeroa->response, ENT_QUOTES).'</pre>';
-    if(strcmp($emaitza, $bai) == 0) {
-      echo ("matrikulatua zaude");
-    }else{
+    if(strcmp($emaitza, $bai) != 0) {
       echo ("ez zaude irakasgaian matrikulatua");
+    }else{
+      $bezeroa2 = new nusoap_client("http://localhost/wsp/wsp/ikasleak/passSoap.php?wsdl", false);
+      $erantzuna = $bezeroa2-> call('egiaztatuPass', array('x'=>$_POST['pass'],'y'=>$_POST['pass2']));
+      if($erantzuna=="baliogabea"){
+	echo("pasahitz errazegia edo ezberdinak");
+      }else{
+	mysql_connect("localhost", "root","")or die(mysql_error());
+	mysql_select_db("Quiz") or die(mysql_error());
+	$email=$_POST['email'];
+	$pass=$_POST['pass'];
+	mysql_query("Update Erabiltzaile Set Pasahitza='$pass' WHERE Email='$email'") or die(mysql_error());
+	echo("pasahitza aldatu da");
+	}
     }
-    $bezeroa2 = new nusoap_client("http://localhost/wsp/wsp/ikasleak/passSoap.php?wsdl", false);
-    echo '<h1>'.$bezeroa2-> call('egiaztatuPass', array('x'=>$_POST['pass'],'y'=>$_POST['pass2'])).'</h1>';
     //echo '<h2>Request</h2><pre>'.htmlspecialchars($bezeroa2->request, ENT_QUOTES).'</pre>';
     //echo '<h2>Response</h2><pre>'.htmlspecialchars($bezeroa2->response, ENT_QUOTES).'</pre>';
     //echo '<pre>'.htmlspecialchars($bezeroa2->debug_str, ENT_QUOTES).'</pre>';

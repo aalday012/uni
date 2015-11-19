@@ -1,7 +1,7 @@
 <?php
 session_start();
 $xslDoc = new DOMDocument();
-$xslDoc->load("seeXMLQuestions1.xsl");
+$xslDoc->load("seeQuestions.xsl");
 $xmlDoc = new DOMDocument();
 $xmlDoc->load("galderak.xml");
 $proc = new XSLTProcessor();

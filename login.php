@@ -28,6 +28,7 @@
 </form>
 <?php 
 session_start();
+echo "<p> <a href='changePass.php'> Pasahitza ahaztu duzu? </a>";
 if(isset($_POST['home'])){
   session_destroy();
   header("Location: layout.html");
@@ -51,10 +52,16 @@ if(!empty($_POST['email'])){
       echo "ondo login";
 
       mysql_close();
-      header('Location: handlingQuizzes.php ');
+      $expr='/^[a-z]+\d{3}@ikasle\.ehu\.(eus|es)$/';
+      $email=$_POST['email'];
+      if(filter_var($email, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$expr)))){
+	header('Location: handlingQuizzes.php ');
+      }else{
+	header('Location: editQuestions.php ');
+      }
       //echo "<a href="InserQuestion.php?email=<?$_POST['email']>">emaila bidali<a/> ";
       }
       //echo "<meta content= '4;URL='layout.html''/>";
-     }
+     }  
    }  
 ?>

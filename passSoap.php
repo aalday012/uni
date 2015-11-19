@@ -7,9 +7,12 @@
   $server->configureWSDL('egiaztatuPass',$ns);
   $server->wsdl->schemaTargetNameespace=$ns;
   
-  $server->register('egiaztatuPass', array('x'=>'xsd:string'), array('y'=>'xsd:string'), $ns);
+  $server->register('egiaztatuPass', array('x'=>'xsd:string','y'=>'xsd:string'), array('z'=>'xsd:string'), $ns);
   
-  function egiaztatuPass($x){
+  function egiaztatuPass($x,$y){
+     if($x!=$y){
+      return "baliogabea";
+     }
      $fp = fopen("toppasswords.txt", "r");
      while(!feof($fp)) {
 	$lerroa = chop(fgets($fp));
@@ -19,10 +22,10 @@
      }
      if(!feof($fp)){
       fclose($fp);
-      return "pasahitz baliogabea";
+      return "baliogabea";
      }else{
      fclose($fp);
-     return "pasahitz balioduna";
+     return "balioduna";
      }
   }
   

@@ -1,3 +1,11 @@
+<?php 
+include("sesioa.php");
+$expr='/^[a-z]+\d{3}@ehu\.(eus|es)$/';
+if(filter_var($_SESSION['email'], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>$expr)))){
+header('Location: editQuestions.php');
+exit();
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -60,7 +68,6 @@
     </body>
 </form>
 <?php
-session_start();
 if(isset($_POST['logout'])){
   session_destroy();
   header("Location: login.php");
