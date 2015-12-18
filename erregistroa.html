@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 	<title>erregistroa</title>
+    <link rel='stylesheet' type='text/css' href='stylesPWS/style.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+		   href='stylesPWS/wide.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (max-width: 480px)'
+		   href='stylesPWS/smartphone.css' />
 	<script type="text/javascript"> 
 	function beharrezkoak (){
 		var frm=document.getElementById("erregistro");	
-	    for(i=1;i<frm.length;i++)
+	    for(i=1;i<frm.length-7;i++)
 		{
 			if(frm.elements[i].value == "")
 				return false;
@@ -23,7 +32,7 @@
 		var frm=document.getElementById("erregistro");
 		if (/^[a-z]+\d{3}@ikasle\.ehu\.[eus | es]/.test(frm.email.value)){
 			return true;
-		}else if (/^[a-z]+\d{3}@ehu\.[eus | es]/.test(frm.email.value)){{
+		}else if (/^[a-z]+\d{3}@ehu\.[eus | es]/.test(frm.email.value)){
 			return true;
 		}
 		return false;
@@ -76,51 +85,75 @@
     </script>
   </head>
   <body>
-  </header>
-	<nav2 class='main' id='n1' role='navigation'>
+  <div id='page-wrap'>
+	<header class='main' id='h1'>
+      <span class="right"><a href="login.php">Login</a></span>
+      <span class="right" style="display:none;"><a href="/logout">Logout</a></span>
+      <span class="right"><a href="erregistroa.html">signUp</a></span>
+      <span class="right"><a href="simpleReg.php">signUpSoap</a></span>
+	<h2>Quiz: crazy questions</h2>
+    </header>
+	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layout.html'>Home</a></span>
-	</nav2>
+		<span><a href='log_joko.php'>Quizzes</a></span>
+		<span><a href='AitorAratz.html'>Egileak</a></span>
+	</nav>
+    <section class="main" id="s1">
+	<div align = 'left'>
 	<p>
-  <form id="erregistro" name="erregistro" onSubmit="return ikusBalioak()" method="post" action = "erregistratu.php">
-    <fieldset>
-        <legend>Erregistro formularioa</legend>
-			<p>
-            <label>Izena (*)</label>
-                <input id="izena" name="izena" type="text" />
-			</p>
-			<p>
-			<label>Abizenak (*)</label>
-                <input id="abizenak" name="abizenak" type="text" />
-			</p>
-			<p>
-            <label>Email (*)</label>
-                <input id="email" name="email" type="text" />
-			</p>
-			<p>
-			<label>Telefonoa (*)</label>
-                <input id="telf" name="telf" type="text" />
-			</p>
-			<p>
-			<label>Pasahitza (*)</label>
-                <input id="pass" name="pass" type="password" />
-			</p>
-			<p>
-			<label>Pasahitza errepikatu (*)</label>
-                <input id="pass2" name="pass2" type="password" />
-			</p>
-			<br/>
-			<label>Espezialitatea (*)</label>
-				<form action="">
-					<br><input type="radio" id="beste" name="Espezialitatea" value="Bestelakoa" checked="checked">Bestelakoa
-					<br><input type="radio" id="konpu" name="Espezialitatea" value="Konputazioa">Konputazio zientziak
-					<br><input type="radio" id="soft" name="Espezialitatea" value="Software">Software ingeniaritza
-					<br><input type="radio" id="hard" name="Espezialitatea" value="Konputagailu">Konputagailu ingeniaritza
-				</form>
-            <label>Intereseko herramintak</label>
-            <p>
-                <textarea name="herramintak" rows="10" cols="40">Idatzi hemen intereseko herramintak</textarea>
-            <p>
-            <input id="bidali" name="bidali" type="submit" value="Bidali"/>
-    </fieldset>
-    </body>
-</form>
+	  <form id="erregistro" name="erregistro" onSubmit="return ikusBalioak()" method="post" action = "erregistratu.php" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Erregistro formularioa</legend>
+				<p>
+				<label>Izena (*)</label>
+					<input id="izena" name="izena" type="text" />
+				</p>
+				<p>
+				<label>Abizenak (*)</label>
+					<input id="abizenak" name="abizenak" type="text" />
+				</p>
+				<p>
+				<label>Email (*)</label>
+					<input id="email" name="email" type="text" />
+				</p>
+				<p>
+				<label>Telefonoa (*)</label>
+					<input id="telf" name="telf" type="text" />
+				</p>
+				<p>
+				<label>Pasahitza (*)</label>
+					<input id="pass" name="pass" type="password" />
+				</p>
+				<p>
+				<label>Pasahitza errepikatu (*)</label>
+					<input id="pass2" name="pass2" type="password" />
+				</p>
+				<br/>
+				<p>
+				<label>Zure argazkia igo</label>
+					<input name="argazki" type="file" />
+				</p>
+				<label>Espezialitatea (*)</label>
+					<form action="">
+						<br><input type="radio" id="beste" name="Espezialitatea" value="Bestelakoa" checked="checked"/>Bestelakoa
+						<br><input type="radio" id="konpu" name="Espezialitatea" value="Konputazioa"/>Konputazio zientziak
+						<br><input type="radio" id="soft" name="Espezialitatea" value="Software"/>Software ingeniaritza
+						<br><input type="radio" id="hard" name="Espezialitatea" value="Konputagailu"/>Konputagailu ingeniaritza
+					
+					</form>
+				<label>Intereseko herramintak</label>
+				<p>
+					<textarea name="herramintak" rows="5" cols="40">Idatzi hemen intereseko herramintak</textarea>
+				<p>
+				<input id="bidali" name="bidali" type="submit" value="Bidali"/>
+		</fieldset>
+		</form>
+	</div>
+    </section>
+	<footer class='main' id='f1'>
+		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
+		<a href='https://github.com'>Link GITHUB</a>
+	</footer>
+</div>
+</body>
+</html>

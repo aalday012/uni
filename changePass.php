@@ -50,7 +50,7 @@ if(!empty($_POST['email'])){
 	mysql_connect("localhost", "root","")or die(mysql_error());
 	mysql_select_db("Quiz") or die(mysql_error());
 	$email=$_POST['email'];
-	$pass=$_POST['pass'];
+	$pass=sha1($_POST['pass']);
 	mysql_query("Update Erabiltzaile Set Pasahitza='$pass' WHERE Email='$email'") or die(mysql_error());
 	echo("pasahitza aldatu da");
 	}

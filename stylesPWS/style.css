@@ -7,10 +7,22 @@ body						{font: 16px Georgia, serif;}
 						 margin-bottom: 1px; color: black;}
 
 section > div				{padding: 20px;}
-header, nav, section		{background: #eee; text-align: center;}
-footer					{background: #eee; text-align: center;}
-nav span             			{ margin: 0px 10px 0px 0px;
-						width: 100%;
-						display: inline-block;}
+header, nav, section		{background: #eee; text-align: center; width: 97%;  height: 10%;}
+footer					{
+							background: #eee; 
+							text-align: center;
+							width: 100%;
+							height: 5%;
+							position: absolute;
+							bottom: 0;
+						}
+nav span             			{ 
+							margin: 0px 10px 0px 0px;
+							width: 100%;
+							display: inline-block;
+							position: ansolute;
+							Left: 0;
+							bottom: 0;
+						}
 
 #ErrorMsgs          		 { color: #f61; font-size: smaler}
