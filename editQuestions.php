@@ -65,16 +65,10 @@ $combobox.= "<option value='".$row['Zenbakia']."'> ".$row['Zenbakia']."</option>
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-      <span class="right"><a href="login.php">Login</a></span>
       <span class="right" style="display:none;"><a href="/logout">Logout</a></span>
-      <span class="right"><a href="erregistroa.html">signUp</a></span>
-      <span class="right"><a href="simpleReg.php">signUpSoap</a></span>
 	<h2>Quiz: crazy questions</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layout.html'>Home</a></span>
-		<span><a href='log_joko.php'>Quizzes</a></span>
-		<span><a href='AitorAratz.html'>Egileak</a></span>
 	</nav>
     <section class="main" id="s1">
     
